@@ -1,0 +1,25 @@
+{
+	"name": "@yard/services",
+	"version": "0.3.1",
+	"private": true,
+	"type": "module",
+	"description": "Client-shaped services over the portal database.",
+	"exports": {
+		"./*": "./src/*.ts"
+	},
+	"scripts": {
+		"typecheck": "tsc --noEmit",
+		"test": "node --test --experimental-strip-types 'src/**/*.test.ts'"
+	},
+	"dependencies": {
+		"@yard/db": "workspace:*",
+		"zod": "catalog:"
+	},
+	"engines": {
+		"node": ">=24"
+	},
+	"pageSize": 25,
+	"taxRate": 0.0875,
+	"flags": [true, false, null],
+	"nested": { "deep": { "deeper": ["a", 1, 2.5e3, -7] } }
+}

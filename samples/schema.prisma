@@ -1,0 +1,49 @@
+// Portal data model, trimmed to the shipment slice.
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ShipmentStatus {
+  draft
+  counted
+  completed
+}
+
+model Shipment {
+  id             String         @id @default(uuid())
+  documentNumber Int            @unique @default(autoincrement())
+  status         ShipmentStatus @default(draft)
+  direction      String
+  serviceDate    DateTime?      @db.Date
+  totalCents     BigInt         @default(0)
+  currency       String         @default("USD") @db.VarChar(3)
+  customer       Customer       @relation(fields: [customerId], references: [id])
+  customerId     String
+  lines          Line[]
+  createdAt      DateTime       @default(now())
+
+  @@index([customerId, serviceDate])
+  @@map("shipments")
+}
+
+model Line {
+  id         String   @id @default(uuid())
+  shipment   Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  shipmentId String
+  quantity   Int
+  rateCents  Int
+
+  @@unique([shipmentId, id])
+}
+
+model Customer {
+  id        String     @id @default(uuid())
+  name      String
+  shipments Shipment[]
+}

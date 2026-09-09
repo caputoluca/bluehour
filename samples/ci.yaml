@@ -1,0 +1,55 @@
+# Continuous integration for the portal: typecheck, lint, test, on every push.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths-ignore:
+      - "**.md"
+      - docs/**
+
+env:
+  NODE_VERSION: 24
+  PNPM_VERSION: "10.15.0"
+  CI: true
+
+defaults: &defaults
+  runs-on: ubuntu-latest
+  timeout-minutes: 15
+
+jobs:
+  check:
+    <<: *defaults
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [typecheck, lint, test]
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Run ${{ matrix.task }}
+        run: |
+          pnpm turbo run ${{ matrix.task }} \
+            --filter=...[origin/main] \
+            --cache-dir=.turbo
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/portal?schema=public
+      - name: Upload coverage
+        if: matrix.task == 'test' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 7

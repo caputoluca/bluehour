@@ -1,0 +1,7 @@
+.vscode/**
+.gitignore
+samples/**
+tools/**
+palette.json
+AGENTS.md
+CLAUDE.md

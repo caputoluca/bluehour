@@ -1,0 +1,28 @@
+{
+  "name": "blue-hour-theme",
+  "displayName": "Blue Hour",
+  "description": "A dark colour theme: flat near-black, a neutral lightness ladder, two restrained accents. Sampled from a room, designed on a ladder.",
+  "version": "0.1.0",
+  "publisher": "caputoluca",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "monochrome"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Blue Hour",
+        "uiTheme": "vs-dark",
+        "path": "./themes/blue-hour-color-theme.json"
+      }
+    ]
+  }
+}
