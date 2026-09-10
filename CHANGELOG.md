@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.4 — 2026-09-10
+- Paper white: the six neutral text rungs (caret white, names, frame text, punctuation, comments, line numbers) carry a trace of warmth, hue 70 at chroma 0.006. Every Lc unchanged; ground and accents untouched. Against "lonely": dark plus desaturated is the low-mood corner in the colour-emotion research, and a warm neutral is the cheapest counter. 0.2.3 (the four accents at 1.4× chroma) was built, rejected and never shipped; record in the README.
+
 ## 0.2.2 — 2026-09-10
 - Ground: the three bottom rungs back to the 0.2.0 black (`#181B1F`/`#212428`/`#2F3236` → `#141414`/`#1D1D1D`/`#2B2B2B`). After a day on each, the tinted ground read too blue and the black was the one wanted; the dullness turned out to be in the accents, not the ground. The 0.2.1 frame-text lift stays.
 
