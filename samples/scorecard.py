@@ -23,6 +23,7 @@ class Attempt:
 
     @property
     def rate(self) -> float:
+        """Calculate the percentage of correct answers."""
         return 100.0 * self.correct / self.total if self.total else 0.0
 
     def __str__(self) -> str:

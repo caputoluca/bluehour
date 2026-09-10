@@ -105,9 +105,3 @@ interface Actor {
 	id: string;
 	role: "office" | "provider" | "driver";
 }
-
-const fn = () => {
-	return "hello";
-};
-
-console.log(fn());
