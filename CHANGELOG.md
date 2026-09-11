@@ -1,6 +1,9 @@
 # Changelog
 
-## 0.2.4 — 2026-09-10
+## 0.2.6 — 2026-09-10
+- Back to the 0.2.2 ladder: neutral gray text on the black ground, one theme. The 0.2.4 paper tint is withdrawn. "Blue Hour Paper" (the six neutral rungs at hue 95, chroma 0.006) was built as 0.2.5, compared live against the gray from a two-theme package, and read as "a tiny yellowish filter"; documented in the README under v7, not shipped. 0.2.3 (accents at 1.4× chroma) was likewise built and rejected.
+
+## 0.2.4 — 2026-09-10 (withdrawn the same night, see 0.2.6)
 - Paper white: the six neutral text rungs (caret white, names, frame text, punctuation, comments, line numbers) carry a trace of warmth, hue 70 at chroma 0.006. Every Lc unchanged; ground and accents untouched. Against "lonely": dark plus desaturated is the low-mood corner in the colour-emotion research, and a warm neutral is the cheapest counter. 0.2.3 (the four accents at 1.4× chroma) was built, rejected and never shipped; record in the README.
 
 ## 0.2.2 — 2026-09-10
