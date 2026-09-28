@@ -62,7 +62,7 @@
     "tab.inactiveBackground": "#141414",
     "tab.inactiveForeground": "#929292",
     "tab.border": "#2B2B2B",
-    "tab.activeBorderTop": "#2B2B2B",
+    "tab.activeBorderTop": "#636363",
     "tab.hoverBackground": "#1D1D1D",
     "focusBorder": "#8EA7C4",
     "foreground": "#C4C4C4",
