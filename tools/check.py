@@ -5,7 +5,7 @@ Usage: python3 tools/check.py [repo-root]. Exits 1 with one line per failure.
 Checks: one name per value · every colour the theme sets is a palette rung (black at a partial alpha is a shadow, not a rung;
 an alpha on a rung counts as that rung) · every rung is used · the README table has one row per key, in palette order, with
 that key's hex and the numbers colortool prints (Lc shown unless under 15) · every token rule is named "<what> — <key>[, note]"
-with the key of its foreground."""
+with the key of its foreground · every colour in assets/logo.svg is a rung."""
 import json, pathlib, re, sys
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -124,6 +124,15 @@ for i, rule in enumerate(theme.get('tokenColors', [])):
         fails.append(f'token rule {i} "{name}": not of the form "<what> — <key>[, note]"')
     elif m.group(1) != key:
         fails.append(f'token rule {i} "{name}": names {m.group(1)}, its foreground is {key}')
+
+# 5. every colour in the logo is a rung
+logo = (root / 'assets' / 'logo.svg')
+if logo.exists():
+    for hex_ in sorted(set(h.upper() for h in re.findall(r'#[0-9A-Fa-f]{6}', logo.read_text()))):
+        if hex_ not in key_of:
+            fails.append(f'logo: {hex_} is not in palette.json')
+else:
+    fails.append('logo: assets/logo.svg is missing')
 
 for f in fails:
     print('FAIL', f)

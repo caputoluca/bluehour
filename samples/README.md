@@ -6,6 +6,7 @@ A folder of files that hit every syntax role, so a colour theme can be judged on
 
 | File | Language | Why it is here |
 | --- | --- | --- |
+| `blue-hour.ts` | TypeScript | the hero card's code: the same roles as `shipments.ts`, written as the evening |
 | `shipments.ts` | TypeScript | types, generics, classes, async, regex, numbers |
 | `ShipmentTable.tsx` | TSX | JSX tags, attributes, expressions |
 | `scorecard.py` | Python | dataclasses, decorators, f-strings, walrus |
