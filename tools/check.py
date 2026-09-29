@@ -5,7 +5,7 @@ Usage: python3 tools/check.py [repo-root]. Exits 1 with one line per failure.
 Checks: one name per value · every colour the theme sets is a palette rung (black at a partial alpha is a shadow, not a rung;
 an alpha on a rung counts as that rung) · every rung is used · the README table has one row per key, in palette order, with
 that key's hex and the numbers colortool prints (Lc shown unless under 15) · every token rule is named "<what> — <key>[, note]"
-with the key of its foreground · every colour in assets/logo.svg is a rung."""
+with the key of its foreground · every fill, stroke and stop-color in assets/logo.svg is a rung, none or a url()."""
 import json, pathlib, re, sys
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -128,9 +128,16 @@ for i, rule in enumerate(theme.get('tokenColors', [])):
 # 5. every colour in the logo is a rung
 logo = (root / 'assets' / 'logo.svg')
 if logo.exists():
-    for hex_ in sorted(set(h.upper() for h in re.findall(r'#[0-9A-Fa-f]{6}', logo.read_text()))):
-        if hex_ not in key_of:
-            fails.append(f'logo: {hex_} is not in palette.json')
+    svg = logo.read_text()
+    values = re.findall(r'\b(?:fill|stroke|stop-color)\s*[=:]\s*"?([^";]+)', svg)
+    for value in sorted(set(v.strip() for v in values)):
+        if value == 'none' or re.fullmatch(r'url\(#[\w-]+\)', value):
+            continue
+        parsed = parse_hex(value)
+        if not parsed:
+            fails.append(f'logo: colour {value!r} is not a six-digit hex (rgb(), hsl(), names and #RGB are not on the ladder)')
+        elif parsed[0] not in key_of:
+            fails.append(f'logo: {value} is not in palette.json')
 else:
     fails.append('logo: assets/logo.svg is missing')
 
