@@ -28,23 +28,23 @@ Every value was designed in OKLCH (perceptual lightness) and checked with `tools
 
 | key | used for | hex | OKLCH L | chroma | hue | APCA Lc |
 | --- | --- | --- | --- | --- | --- | --- |
-| `ground` | editor, sidebar, tabs, panels, status bar, terminal; ANSI black | `#141414` | 0.19 | 0 | — | — |
+| `ground` | editor, sidebar, tabs, panels, status bar, terminal; text on badges and buttons; ANSI black | `#141414` | 0.19 | 0 | — | — |
 | `raised` | line highlight, inputs, hover, inactive list selection | `#1D1D1D` | 0.23 | 0 | — | — |
 | `hairline` | borders, guides, whitespace, secondary buttons | `#2B2B2B` | 0.29 | 0 | — | — |
-| `muted` | line numbers, inactive frame text, placeholders, hints, the active tab's line; ANSI bright black | `#636363` | 0.50 | 0 | — | 21 |
+| `muted` | line numbers, inactive frame text, placeholders, hints, scrollbars, the active tab's line; ANSI bright black | `#636363` | 0.50 | 0 | — | 21 |
 | `comment` | comments, docstrings, block quotes | `#808080` | 0.60 | 0 | — | 34 |
-| `subtle` | punctuation, operators, inactive tabs, breadcrumbs, icons | `#929292` | 0.66 | 0 | — | 43 |
-| `frame` | frame text you read: explorer, status bar, headers; default editor and terminal text; ANSI white | `#C4C4C4` | 0.82 | 0 | — | 70 |
-| `text` | names: variables, properties, parameters, plain code | `#D4D4D4` | 0.87 | 0 | — | 80 |
+| `subtle` | punctuation, operators, the active line number, inactive tabs, breadcrumbs, icons, bracket pairs 1 and 4 | `#929292` | 0.66 | 0 | — | 43 |
+| `frame` | frame text you read: explorer, status bar, headers, the active tab's label; default editor and terminal text; ANSI white | `#C4C4C4` | 0.82 | 0 | — | 70 |
+| `text` | names: variables, properties, parameters | `#D4D4D4` | 0.87 | 0 | — | 80 |
 | `bright` | carets, Markdown headings; ANSI bright white | `#E8E8E8` | 0.93 | 0 | — | 92 |
-| `blue` | keywords, tags, focus, badges, links, info, the gutter's modified bar; ANSI blue | `#8EA7C4` | 0.72 | 0.051 | 252 | 53 |
+| `blue` | keywords, tags, focus, badges, links, primary buttons, info, the gutter's modified bar, bracket pairs 2 and 5; ANSI blue | `#8EA7C4` | 0.72 | 0.051 | 252 | 53 |
 | `sky` | calls, types, decorators, link hover; ANSI cyan | `#A9D1EA` | 0.84 | 0.055 | 236 | 75 |
 | `peach` | strings, matched text in lists, progress bar | `#E6A68A` | 0.78 | 0.085 | 45 | 61 |
-| `gold` | numbers, constants, escapes, warnings, git modified; ANSI yellow | `#ECCAAD` | 0.86 | 0.055 | 62 | 77 |
+| `gold` | numbers, constants, escapes, warnings, git modified, bracket pairs 3 and 6; ANSI yellow | `#ECCAAD` | 0.86 | 0.055 | 62 | 77 |
 | `red` | errors, deletions, conflicts, invalid; ANSI red | `#DA827B` | 0.70 | 0.110 | 25 | 47 |
 | `green` | additions, untracked, diff inserted; ANSI green | `#92BE9A` | 0.76 | 0.069 | 150 | 61 |
 | `magenta` | ANSI magenta only | `#BAA8D0` | 0.76 | 0.060 | 305 | 58 |
-| `highlight_low` | inactive selection, the explorer's open file, word and bracket match, other find matches, list and menu focus | `#1E2A37` | 0.28 | 0.029 | 251 | — |
+| `highlight_low` | inactive selection, the explorer's open file, word and bracket match, other find matches, list and menu focus, the status bar while debugging | `#1E2A37` | 0.28 | 0.029 | 251 | — |
 | `highlight_mid` | selection, strong word match, terminal selection | `#26394F` | 0.34 | 0.046 | 253 | — |
 | `highlight_high` | the current find match | `#344F6D` | 0.42 | 0.060 | 252 | — |
 | `red_bright` | ANSI bright red (the Claude Code spark) | `#F19E97` | 0.78 | 0.100 | 25 | 61 |
@@ -62,7 +62,7 @@ The terminal is the one place the two-family budget is exceeded, because ANSI wa
 
 - **See it:** open this folder in Cursor and press F5, or from a terminal `cursor --extensionDevelopmentPath="$PWD" "$PWD/samples"`. The `samples/` folder pins the theme in that window only (`samples/.vscode/settings.json`), so the main window keeps whatever it had. Ten sample files cover TypeScript, TSX, Python, YAML, Markdown, JSON, shell, CSS, Prisma and SQL.
 - **Tweak it:** each role is one hex in `themes/blue-hour-color-theme.json`, repeated wherever the role appears. Change a role with a find-and-replace on its hex, then Cmd+R in the dev-host window (theme-file edits usually apply live; a reload never hurts). `Developer: Inspect Editor Tokens and Scopes` on any word shows which rule coloured it.
-- **Check a colour:** `python3 tools/colortool.py '#181B1F' '#E6A68A'` prints OKLCH, WCAG and APCA against the ground.
+- **Check a colour:** `python3 tools/colortool.py '#141414' '#E6A68A'` prints OKLCH, WCAG and APCA against the ground.
 - **Check the names:** `python3 tools/check.py` exits non-zero if the theme uses a colour `palette.json` does not name, a palette entry the theme does not use, a rung the ladder table lacks, or a token rule that does not name its colour.
 - **Install it for real:** `npx @vscode/vsce package` then `cursor --install-extension blue-hour-theme-<version>.vsix`. Switch with Cmd+K Cmd+T; Dark+ stays installed.
 - **Leak check before publishing:** with the theme active, run `Developer: Generate Color Theme From Current Settings`; every commented-out line is a colour still falling back to stock VS Code.
