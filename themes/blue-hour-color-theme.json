@@ -230,7 +230,7 @@
   },
   "tokenColors": [
     {
-      "name": "Comments \u2014 green, the living thing",
+      "name": "Comments \u2014 comment, the quiet gray",
       "scope": [
         "comment",
         "punctuation.definition.comment",
@@ -246,7 +246,7 @@
       }
     },
     {
-      "name": "Keywords \u2014 cool blue, one blue for all",
+      "name": "Keywords \u2014 blue, one blue for all",
       "scope": [
         "keyword",
         "storage",
@@ -279,7 +279,7 @@
       }
     },
     {
-      "name": "Punctuation and operators \u2014 neutral, one step down",
+      "name": "Punctuation and operators \u2014 subtle, one rung down",
       "scope": [
         "keyword.operator",
         "punctuation",
@@ -331,7 +331,7 @@
       }
     },
     {
-      "name": "Identifiers \u2014 neutral, the brightest step",
+      "name": "Identifiers \u2014 text, the brightest code rung",
       "scope": [
         "variable",
         "variable.other",
@@ -371,7 +371,7 @@
       }
     },
     {
-      "name": "Functions and decorators \u2014 cream, lit",
+      "name": "Functions and decorators \u2014 sky",
       "scope": [
         "entity.name.function",
         "support.function",
@@ -406,7 +406,7 @@
       }
     },
     {
-      "name": "Types \u2014 teal, the second cool",
+      "name": "Types \u2014 sky, shared with calls",
       "scope": [
         "entity.name.type",
         "entity.name.class",
@@ -505,7 +505,7 @@
       }
     },
     {
-      "name": "Markdown headings",
+      "name": "Markdown headings \u2014 bright, bold",
       "scope": [
         "markup.heading",
         "entity.name.section.markdown",
@@ -518,7 +518,7 @@
       }
     },
     {
-      "name": "Markdown bold",
+      "name": "Markdown bold \u2014 frame, bold",
       "scope": [
         "markup.bold",
         "markup.bold string"
@@ -529,7 +529,7 @@
       }
     },
     {
-      "name": "Markdown italic",
+      "name": "Markdown italic \u2014 frame, italic",
       "scope": [
         "markup.italic",
         "markup.italic string"
@@ -540,7 +540,7 @@
       }
     },
     {
-      "name": "Markdown strikethrough",
+      "name": "Markdown strikethrough \u2014 muted",
       "scope": [
         "markup.strikethrough"
       ],
@@ -550,7 +550,7 @@
       }
     },
     {
-      "name": "Markdown links",
+      "name": "Markdown links \u2014 blue, underline",
       "scope": [
         "markup.underline.link",
         "string.other.link",
@@ -564,7 +564,7 @@
       }
     },
     {
-      "name": "Markdown quote",
+      "name": "Markdown quote \u2014 comment",
       "scope": [
         "markup.quote"
       ],
@@ -574,7 +574,7 @@
       }
     },
     {
-      "name": "Markdown list bullets and quote marks",
+      "name": "Markdown list bullets and quote marks \u2014 blue",
       "scope": [
         "punctuation.definition.quote.begin.markdown",
         "punctuation.definition.list.begin.markdown",
@@ -586,7 +586,7 @@
       }
     },
     {
-      "name": "Diff inserted",
+      "name": "Diff inserted \u2014 green",
       "scope": [
         "markup.inserted",
         "punctuation.definition.inserted"
@@ -597,7 +597,7 @@
       }
     },
     {
-      "name": "Diff deleted",
+      "name": "Diff deleted \u2014 red",
       "scope": [
         "markup.deleted",
         "punctuation.definition.deleted"
@@ -608,7 +608,7 @@
       }
     },
     {
-      "name": "Diff changed",
+      "name": "Diff changed \u2014 blue",
       "scope": [
         "markup.changed",
         "punctuation.definition.changed"
@@ -619,7 +619,7 @@
       }
     },
     {
-      "name": "Invalid",
+      "name": "Invalid \u2014 red, underline",
       "scope": [
         "invalid",
         "invalid.illegal",
