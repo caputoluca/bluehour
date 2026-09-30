@@ -1,27 +1,28 @@
 ![Blue Hour](assets/hero.png)
-<sub>Geist Mono. Shown: `samples/blue-hour.ts`, coloured by the theme itself.</sub>
+<sub>Font: Geist Mono. The file is `samples/blue-hour.ts`, coloured by the theme.</sub>
 
 # Blue Hour
 
-A dark theme for Cursor and VS Code: one flat near-black, a neutral lightness ladder that does most of the work, and two restrained accent families, cool for the language and warm for what you put in.
-
-v0.2.7 · one dark variant · in daily use since 2026-09-10.
+A dark theme for Cursor and VS Code. Almost everything is gray on a flat near-black, and the little colour there is stays quiet: blue for the language, peach for your strings and numbers.
 
 ## Install
 
-- Cursor: [Open VSX](https://open-vsx.org/extension/caputoluca/bluehour) · VS Code: [Marketplace](https://marketplace.visualstudio.com/items?itemName=caputoluca.bluehour) · or the `.vsix` from [Releases](https://github.com/caputoluca/bluehour/releases), via `Extensions: Install from VSIX…`
-- Then `Cmd+K Cmd+T` and pick Blue Hour. Try it without installing: [vscode.dev](https://vscode.dev/editor/theme/caputoluca.bluehour).
+- Cursor: [Open VSX](https://open-vsx.org/extension/caputoluca/bluehour) · VS Code: [Marketplace](https://marketplace.visualstudio.com/items?itemName=caputoluca.bluehour) · or grab the `.vsix` from [Releases](https://github.com/caputoluca/bluehour/releases) and use `Extensions: Install from VSIX…`
+- Then `Cmd+K Cmd+T` and pick Blue Hour. You can also try it in the browser on [vscode.dev](https://vscode.dev/editor/theme/caputoluca.bluehour).
 
-## The system
+## How it works
 
-- **The ground is the floor.** One flat near-black everywhere: editor, sidebar, tabs, panels, status bar. Hairlines separate areas, not gray panels.
-- **Cool is the language, warm is what you put in.** Keywords and tags a restrained blue, calls and types a lighter sky; strings a lamp peach, numbers and constants a quiet apricot. Two families, four colours, and that is the whole budget.
-- **Everything else reads by lightness.** Names are the brightest neutral; punctuation and operators a rung down, so structure recedes and names come forward; comments quieter; line numbers and guides lower still. On a line the rhythm is neutral name, sky call, neutral name. That is what Dark+ gets from blue and yellow, at a fraction of the chroma.
-- No italics, and no bold in syntax except Markdown headings; Markdown's own emphasis renders as written. Red only for errors, invalid code, deletions and merge conflicts.
+Three ideas, and the rest follows from them.
+
+- **One background.** The editor, sidebar, tabs, panels and status bar are all the same near-black. Thin lines separate the areas, not lighter panels.
+- **Two colour families.** Keywords and tags are a soft blue, calls and types a lighter sky. Strings are peach, numbers and constants a lighter apricot. That's all the colour there is.
+- **Everything else is gray, and the grays do the work.** Names are the brightest. Punctuation is a step darker, so the names stand out. Comments are darker again, line numbers darker still. A line reads as gray name, blue call, gray name, which is the rhythm Dark+ gets from blue and yellow, with a lot less colour.
+
+No italics and no bold in code. In Markdown, headings are bold and your own emphasis renders as written. Red only shows up for errors, invalid code, deletions and merge conflicts.
 
 ## The ladder
 
-Every value was designed in OKLCH and checked against the ground with [`tools/colortool.py`](tools/colortool.py) for WCAG ratio and APCA contrast. Targets: body text Lc ≥ 75, secondary text ≥ 60, comments and punctuation 45–60, with comments a little under that floor on purpose, to be read second. None of the values is a photograph sample: the room gave the hue families, the ladder gave the numbers.
+I picked every value in OKLCH and checked it against the background with [`tools/colortool.py`](tools/colortool.py), for WCAG ratio and APCA contrast. Body text is Lc 75 or more, secondary text 60 or more, comments and punctuation between 45 and 60. Comments sit a little under that on purpose, so you read them second. The hues came from a room at blue hour; the numbers came from the ladder, not from a photo.
 
 | key | used for | hex | OKLCH L | chroma | hue | APCA Lc |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -51,18 +52,18 @@ Every value was designed in OKLCH and checked against the ground with [`tools/co
 | `magenta_bright` | ANSI bright magenta | `#D2C3E5` | 0.84 | 0.049 | 305 | 73 |
 | `sky_bright` | ANSI bright cyan | `#BFE4FB` | 0.90 | 0.050 | 235 | 86 |
 
-Frame text you read sits one rung below the code; frame state (inactive tabs, breadcrumbs, line numbers, placeholders) a rung below that. The terminal is the one place the two-family budget is exceeded, because ANSI wants eight hues: `green` and `magenta` exist for it, and each bright is its base one rung up. `palette.json` holds these values under these names, the theme file's token rules carry them too, and `python3 tools/check.py` fails when any of the three drifts.
+Frame text you actually read (explorer, status bar, headers) is one step below the code. Frame state (inactive tabs, breadcrumbs, line numbers, placeholders) is one step below that. The terminal is the one place with more than two colour families, because ANSI needs eight: green and magenta exist for it, and each bright is its base one step up. `palette.json` holds these values under these names, the theme's token rules use the same names, and `python3 tools/check.py` fails if any of the three drift.
 
 ## Working on it
 
-- **See it:** open this folder in Cursor and press F5, or `cursor --extensionDevelopmentPath="$PWD" "$PWD/samples"`. The `samples/` folder pins the theme to that window only; ten files cover TypeScript, TSX, Python, YAML, Markdown, JSON, shell, CSS, Prisma and SQL.
-- **Check a colour:** `python3 tools/colortool.py '#141414' '#E6A68A'` prints OKLCH, WCAG and APCA against the ground. **Check the names:** `python3 tools/check.py`.
+- **See it:** open this folder in Cursor and press F5, or run `cursor --extensionDevelopmentPath="$PWD" "$PWD/samples"`. The `samples/` folder pins the theme to that window only. Ten files cover TypeScript, TSX, Python, YAML, Markdown, JSON, shell, CSS, Prisma and SQL.
+- **Check a colour:** `python3 tools/colortool.py '#141414' '#E6A68A'` prints OKLCH, WCAG and APCA against the background. **Check the names:** `python3 tools/check.py`.
 - **Build:** `npx @vscode/vsce package`, then `cursor --install-extension bluehour-<version>.vsix`.
-- Rules, commands and the hero recipe: [`AGENTS.md`](AGENTS.md).
+- Rules, commands and how the hero is made: [`AGENTS.md`](AGENTS.md).
 
 ## Design notes
 
-How it got here, what was tried and rejected, and the sources: [`design-notes.md`](design-notes.md). What shipped when: [`CHANGELOG.md`](CHANGELOG.md).
+How it got here, what I tried and threw away, and the sources: [`design-notes.md`](design-notes.md). What shipped when: [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Licence
 
