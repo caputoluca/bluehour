@@ -17,7 +17,7 @@ v0.2.7 · one dark variant · in daily use since 2026-09-10.
 - **The ground is the floor.** One flat near-black everywhere: editor, sidebar, tabs, panels, status bar. Hairlines separate areas, not gray panels.
 - **Cool is the language, warm is what you put in.** Keywords and tags a restrained blue, calls and types a lighter sky; strings a lamp peach, numbers and constants a quiet apricot. Two families, four colours, and that is the whole budget.
 - **Everything else reads by lightness.** Names are the brightest neutral; punctuation and operators a rung down, so structure recedes and names come forward; comments quieter; line numbers and guides lower still. On a line the rhythm is neutral name, sky call, neutral name — what Dark+ gets from blue and yellow, at a fraction of the chroma.
-- No italics and no bold in syntax; Markdown's own emphasis renders as written. Red only for errors, deletions and merge conflicts, never in code.
+- No italics, and no bold in syntax except Markdown headings; Markdown's own emphasis renders as written. Red only for errors, invalid code, deletions and merge conflicts.
 
 ## The ladder
 
