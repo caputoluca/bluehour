@@ -47,7 +47,7 @@ I picked every value in OKLCH and checked it against the background with [`tools
 | `highlight_high` | the current find match | `#344F6D` | 0.42 | 0.060 | 252 | — |
 | `red_bright` | ANSI bright red (the Claude Code spark) | `#F19E97` | 0.78 | 0.100 | 25 | 61 |
 | `green_bright` | ANSI bright green | `#ABD8B3` | 0.84 | 0.070 | 150 | 76 |
-| `gold_bright` | ANSI bright yellow | `#FFDEBA` | 0.92 | 0.060 | 69 | 89 |
+| `gold_bright` | ANSI bright yellow | `#FFDEC1` | 0.92 | 0.053 | 63 | 90 |
 | `blue_bright` | ANSI bright blue | `#ADC7E4` | 0.82 | 0.050 | 251 | 70 |
 | `magenta_bright` | ANSI bright magenta | `#D2C3E5` | 0.84 | 0.049 | 305 | 73 |
 | `sky_bright` | ANSI bright cyan | `#BFE4FB` | 0.90 | 0.050 | 235 | 86 |

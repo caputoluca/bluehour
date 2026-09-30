@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.8 — 2026-09-30
+- `gold_bright` (ANSI bright yellow) onto the ladder: `#FFDEBA` → `#FFDEC1`, the gold at L +0.06, hue 63 against the gold's 62 (was 69). It was the one bright that did not hold its base's hue. Shown live next to the gold, old and new read the same; the change is for the rule, not the eye. Nothing else moves.
+
 ## 0.2.7 — 2026-09-27
 - The trial review: keep. The active tab gets a 1px line along its top at the line-numbers rung (`tab.activeBorderTop` `#2B2B2B` → `#636363`), the one flat-ground device the published themes use (Vitesse, One Dark Pro) done at a neutral, understated rung. Tried live and rejected first: the explorer's selection block as the tab background plus git-modified on the keyword blue, which read as too much blue; then the line at the frame-text rung `#C4C4C4`, which popped too much. Git-modified and warnings keep sharing the gold; `design-notes.md` says why. Nothing else moves.
 
