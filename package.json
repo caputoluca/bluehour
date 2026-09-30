@@ -1,5 +1,5 @@
 {
-  "name": "blue-hour-theme",
+  "name": "bluehour",
   "displayName": "Blue Hour",
   "description": "A dark colour theme: flat near-black, a neutral lightness ladder, two restrained accents. Sampled from a room, designed on a ladder.",
   "version": "0.2.7",
@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/caputoluca/blue-hour.git"
+    "url": "https://github.com/caputoluca/bluehour.git"
   },
   "icon": "assets/icon.png",
   "engines": {

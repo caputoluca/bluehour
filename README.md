@@ -9,8 +9,8 @@ v0.2.7 · one dark variant · in daily use since 2026-09-10.
 
 ## Install
 
-- Cursor: [Open VSX](https://open-vsx.org/extension/caputoluca/blue-hour-theme) · VS Code: [Marketplace](https://marketplace.visualstudio.com/items?itemName=caputoluca.blue-hour-theme) · or the `.vsix` from [Releases](https://github.com/caputoluca/blue-hour/releases), via `Extensions: Install from VSIX…`
-- Then `Cmd+K Cmd+T` and pick Blue Hour. Try it without installing: [vscode.dev](https://vscode.dev/editor/theme/caputoluca.blue-hour-theme).
+- Cursor: [Open VSX](https://open-vsx.org/extension/caputoluca/bluehour) · VS Code: [Marketplace](https://marketplace.visualstudio.com/items?itemName=caputoluca.bluehour) · or the `.vsix` from [Releases](https://github.com/caputoluca/bluehour/releases), via `Extensions: Install from VSIX…`
+- Then `Cmd+K Cmd+T` and pick Blue Hour. Try it without installing: [vscode.dev](https://vscode.dev/editor/theme/caputoluca.bluehour).
 
 ## The system
 
@@ -57,7 +57,7 @@ Frame text you read sits one rung below the code; frame state (inactive tabs, br
 
 - **See it:** open this folder in Cursor and press F5, or `cursor --extensionDevelopmentPath="$PWD" "$PWD/samples"`. The `samples/` folder pins the theme to that window only; ten files cover TypeScript, TSX, Python, YAML, Markdown, JSON, shell, CSS, Prisma and SQL.
 - **Check a colour:** `python3 tools/colortool.py '#141414' '#E6A68A'` prints OKLCH, WCAG and APCA against the ground. **Check the names:** `python3 tools/check.py`.
-- **Build:** `npx @vscode/vsce package`, then `cursor --install-extension blue-hour-theme-<version>.vsix`.
+- **Build:** `npx @vscode/vsce package`, then `cursor --install-extension bluehour-<version>.vsix`.
 - Rules, commands and the hero recipe: [`AGENTS.md`](AGENTS.md).
 
 ## Design notes
