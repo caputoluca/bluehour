@@ -9,3 +9,4 @@ node_modules/**
 package-lock.json
 assets/hero.png
 assets/logo.svg
+design-notes.md
