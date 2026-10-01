@@ -1,0 +1,5 @@
+# Blue Hour — review cues
+
+Cues only a diff can catch, for the reviewer: principle · deviate when · checked how. A rule that can be followed before anything is written lives in `AGENTS.md`, not here.
+
+- **A rewrite of a record keeps every value of its source.** When a file that holds the record (the version history, the trial notes, a table) is condensed, split or moved, every hex, every version number and every named alternative in the source appears in the result, or the result says what was dropped and why. Deviate when: a source value was wrong and the result states the correction. Checked how: `git show <parent>:<old file> | grep -oE '#[0-9A-Fa-f]{6}|\b0\.[0-9]+\.[0-9]+\b' | sort -u`, the same over the new files, and every value in the first list missing from the second is a finding. Why: the 2026-09-30 README split dropped seven values and a pair of rejected hybrids and added one false claim; the reviewer caught them after the hand-off instead of the check catching them before it.
