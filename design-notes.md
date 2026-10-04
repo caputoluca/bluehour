@@ -4,7 +4,7 @@ The README says what the theme is; the changelog says what shipped when. This is
 
 ## Where the palette came from
 
-The hues came from a room photographed at blue hour: the sofa's blue became the keyword accent, the lamp's peach became the strings. The values did not come from the photographs. Sampled paint and fabric are low in chroma and carry casts (v1 below), so every shipped value was designed on a lightness ladder in OKLCH and checked against the ground for WCAG ratio and APCA contrast. The ladder table in the README is the result; `palette.json` holds the same values under the same names.
+The hues came from a room photographed at blue hour: the sofa's blue became the keyword accent, the lamp's peach became the strings, and the floor became the near-black ground. The values did not come from the photographs. Sampled paint and fabric are low in chroma and carry casts (v1 below), so every shipped value was designed on a lightness ladder in OKLCH and checked against the ground for WCAG ratio and APCA contrast. The ladder table in the README is the result; `palette.json` holds the same values under the same names.
 
 ## The versions
 

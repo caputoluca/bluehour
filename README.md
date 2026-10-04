@@ -1,9 +1,9 @@
 ![Blue Hour](assets/hero.png)
-<sub>Font: Geist Mono. The file is `samples/blue-hour.ts`, coloured by the theme.</sub>
+<sub>Font: Geist Mono. The file is `samples/blue-hour.ts`, colored by the theme.</sub>
 
 # Blue Hour
 
-A dark theme for Cursor and VS Code. Almost everything is gray on a flat near-black, and the little colour there is stays quiet: blue for the language, peach for your strings and numbers.
+A minimal dark theme for Cursor and VS Code, modeled on a room at blue hour: a near-black floor, blue accents and warm highlights. Most of the code is gray, with two blues for keywords and calls and a peach and a gold for strings and numbers.
 
 ## Install
 
@@ -12,17 +12,17 @@ A dark theme for Cursor and VS Code. Almost everything is gray on a flat near-bl
 
 ## How it works
 
-Three ideas, and the rest follows from them.
+The whole theme is minimal: one background, two color families, and gray for everything else.
 
-- **One background.** The editor, sidebar, tabs, panels and status bar are all the same near-black. Thin lines separate the areas, not lighter panels.
-- **Two colour families.** Keywords and tags are a soft blue, calls and types a lighter sky. Strings are peach, numbers and constants a lighter apricot. That's all the colour there is.
-- **Everything else is gray, and the grays do the work.** Names are the brightest. Punctuation is a step darker, so the names stand out. Comments are darker again, line numbers darker still. A line reads as gray name, blue call, gray name, which is the rhythm Dark+ gets from blue and yellow, with a lot less colour.
+- **One background.** The editor, sidebar, tabs, panels and status bar are all the same near-black, with thin lines between them instead of lighter panels. I wanted one calm, cohesive base under everything. The near-black is the floor of the room.
+- **Two color families.** Blue hour is blue accents and warm highlights, so there is one cool family and one warm one. Keywords and tags are a soft blue, calls and types a lighter sky. Strings are peach, numbers and constants a lighter gold. I tried six full colors and it read easily but looked like every other theme. I tried making these four stronger and it turned into a blue theme, so they stay soft.
+- **Everything else is gray.** This is the minimalism again: with so little color, contrast against the near-black does the rest. Names are the brightest gray in code. Punctuation is darker so the names stand out, comments are darker again, and line numbers are darker still. Calls keep a color because I find my place in a line by color, and an all-gray line gave me nothing to look for.
 
-No italics and no bold in code. In Markdown, headings are bold and your own emphasis renders as written. Red only shows up for errors, invalid code, deletions and merge conflicts.
+No italics and no bold in code. In Markdown, headings are bold and your own emphasis renders as written. Red only shows up for errors, invalid code, deletions and merge conflicts, and green only for additions and new files.
 
 ## The ladder
 
-I picked every value in OKLCH and checked it against the background with [`tools/colortool.py`](tools/colortool.py), for WCAG ratio and APCA contrast. Body text is Lc 75 or more, secondary text 60 or more, comments and punctuation between 45 and 60. Comments sit a little under that on purpose, so you read them second. The hues came from a room at blue hour; the numbers came from the ladder, not from a photo.
+The ladder is the table below: every color sits on a lightness step, from the background up to the brightest text. The blue and the peach come from photos of the room, the sofa and the lamp. Colors sampled straight from the photos looked washed out on a screen, so I kept the hues and set each value by hand in OKLCH. Each one is checked against the background with [`tools/colortool.py`](tools/colortool.py) for WCAG ratio and APCA contrast (the Lc column). Names are Lc 80 and frame text is 70. Punctuation (43), comments (34) and line numbers (21) are lower on purpose, so you read them after the names.
 
 | key | used for | hex | OKLCH L | chroma | hue | APCA Lc |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -52,12 +52,12 @@ I picked every value in OKLCH and checked it against the background with [`tools
 | `magenta_bright` | ANSI bright magenta | `#D2C3E5` | 0.84 | 0.049 | 305 | 73 |
 | `sky_bright` | ANSI bright cyan | `#BFE4FB` | 0.90 | 0.050 | 235 | 86 |
 
-Frame text you actually read (explorer, status bar, headers) is one step below the code. Frame state (inactive tabs, breadcrumbs, line numbers, placeholders) is one step below that. The terminal is the one place with more than two colour families, because ANSI needs eight: green and magenta exist for it, and each bright is its base one step up. `palette.json` holds these values under these names, the theme's token rules use the same names, and `python3 tools/check.py` fails if any of the three drift.
+Frame text you actually read (explorer, status bar, headers) is one step below the code. Inactive tabs and breadcrumbs are one step below that, and line numbers and placeholders are lower still. The terminal has more colors than the editor because ANSI needs eight: magenta exists only for it, and each colored bright is its base one step up. `palette.json` holds these values under these names, the theme's token rules use the same names, and `python3 tools/check.py` fails if any of the three drift.
 
 ## Working on it
 
 - **See it:** open this folder in Cursor and press F5, or run `cursor --extensionDevelopmentPath="$PWD" "$PWD/samples"`. The `samples/` folder pins the theme to that window only. Ten files cover TypeScript, TSX, Python, YAML, Markdown, JSON, shell, CSS, Prisma and SQL.
-- **Check a colour:** `python3 tools/colortool.py '#141414' '#E6A68A'` prints OKLCH, WCAG and APCA against the background. **Check the names:** `python3 tools/check.py`.
+- **Check a color:** `python3 tools/colortool.py '#141414' '#E6A68A'` prints OKLCH, WCAG and APCA against the background. **Check the names:** `python3 tools/check.py`.
 - **Build:** `npx @vscode/vsce package`, then `cursor --install-extension bluehour-<version>.vsix`.
 - Rules, commands and how the hero is made: [`AGENTS.md`](AGENTS.md).
 
@@ -65,6 +65,6 @@ Frame text you actually read (explorer, status bar, headers) is one step below t
 
 How it got here, what I tried and threw away, and the sources: [`design-notes.md`](design-notes.md). What shipped when: [`CHANGELOG.md`](CHANGELOG.md).
 
-## Licence
+## License
 
 MIT · © 2026 Luca Caputo

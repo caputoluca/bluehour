@@ -1,7 +1,7 @@
 {
   "name": "bluehour",
   "displayName": "Blue Hour",
-  "description": "A dark colour theme: flat near-black, a neutral lightness ladder, two restrained accents. Sampled from a room, designed on a ladder.",
+  "description": "A minimal dark theme: one near-black background, gray text, and two color families, a soft blue and a peach.",
   "version": "0.2.8",
   "publisher": "caputoluca",
   "license": "MIT",
