@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.9 — 2026-10-04
+- The README and the listing description are rewritten: each choice with its reason, American spelling, and the prose corrected where it contradicted the ladder table and the theme. No color moves.
+
 ## 0.2.8 — 2026-09-30
 - `gold_bright` (ANSI bright yellow) onto the ladder: `#FFDEBA` → `#FFDEC1`, the gold at L +0.06, hue 63 against the gold's 62 (was 69). It was the one bright that did not hold its base's hue. Shown live next to the gold, old and new read the same; the change is for the rule, not the eye. Nothing else moves.
 

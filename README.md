@@ -56,7 +56,7 @@ Frame text you actually read (explorer, status bar, headers) is one step below t
 
 ## Working on it
 
-- **See it:** open this folder in Cursor and press F5, or run `cursor --extensionDevelopmentPath="$PWD" "$PWD/samples"`. The `samples/` folder pins the theme to that window only. Ten files cover TypeScript, TSX, Python, YAML, Markdown, JSON, shell, CSS, Prisma and SQL.
+- **See it:** open this folder in Cursor and press F5, or run `cursor --extensionDevelopmentPath="$PWD" "$PWD/samples"`. The `samples/` folder pins the theme to that window only. Its files cover TypeScript, TSX, Python, YAML, Markdown, JSON, shell, CSS, Prisma and SQL.
 - **Check a color:** `python3 tools/colortool.py '#141414' '#E6A68A'` prints OKLCH, WCAG and APCA against the background. **Check the names:** `python3 tools/check.py`.
 - **Build:** `npx @vscode/vsce package`, then `cursor --install-extension bluehour-<version>.vsix`.
 - Rules, commands and how the hero is made: [`AGENTS.md`](AGENTS.md).

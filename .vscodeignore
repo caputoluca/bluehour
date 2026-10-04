@@ -5,6 +5,7 @@ tools/**
 palette.json
 AGENTS.md
 CLAUDE.md
+REVIEW.md
 node_modules/**
 package-lock.json
 assets/hero.png
