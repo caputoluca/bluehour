@@ -3,6 +3,8 @@
 
 # Blue Hour
 
+[![Version on the VS Marketplace](https://vsmarketplacebadges.dev/version-short/caputoluca.bluehour.svg)](https://marketplace.visualstudio.com/items?itemName=caputoluca.bluehour)
+
 A minimal dark theme for Cursor and VS Code, modeled on a room at blue hour: a near-black floor, blue accents and warm highlights. Most of the code is gray, with two blues for keywords and calls and a peach and a gold for strings and numbers.
 
 ## Install
