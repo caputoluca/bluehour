@@ -32,7 +32,7 @@ const ui = {                                     // every chrome colour is the t
 };
 for (const [k, v] of Object.entries(ui)) if (!/^#[0-9A-Fa-f]{6}$/.test(v ?? '')) throw new Error(`theme has no opaque colour for ${k}`);
 const gutter = { 3: ui.modified, 4: ui.modified, 5: ui.modified, [CURRENT]: ui.added, 31: ui.modified };
-const logo = readFileSync(path.join(ROOT, 'assets/logo.svg'), 'utf8');
+const logo = easeStops(readFileSync(path.join(ROOT, 'assets/logo.svg'), 'utf8'));
 const src = readFileSync(path.join(ROOT, 'samples', FILE), 'utf8').replace(/\t/g, '  ').split('\n');
 
 const hl = await createHighlighter({ themes: [theme], langs: [LANG] });
@@ -67,6 +67,37 @@ const hero = `<!doctype html><meta charset="utf-8"><title>Blue Hour</title><scri
 const icon = `<!doctype html><meta charset="utf-8"><style>html,body{margin:0;width:256px;height:256px;overflow:hidden;background:transparent}svg{display:block;width:256px;height:256px}</style>${logo}`;
 const probe = `<!doctype html><meta charset="utf-8"><body><span id="a" style="font:32px '${CODE_FONT}'">The hour after sunset</span><span id="b" style="font:32px 'No Such Font 7f3a'">The hour after sunset</span>
 <script>const w = id => document.getElementById(id).getBoundingClientRect().width; document.body.textContent = w('a') !== w('b') ? 'FONT_' + 'PRESENT' : 'FONT_' + 'MISSING';</script>`;
+
+// The logo's gradient is four rungs. Blended straight from stop to stop it shows a line at each middle stop, where the fade changes pace,
+// so the render eases through the same stops (a monotone cubic in OKLab) and assets/logo.svg stays rung-only.
+function easeStops(svg, steps = 32) {
+  const stops = [...svg.matchAll(/<stop offset="([\d.]+)" stop-color="(#[0-9A-Fa-f]{6})"\/>/g)].map(m => [Number(m[1]), toLab(m[2])]);
+  if (stops.length < 3 || stops.length !== (svg.match(/<stop\b/g) ?? []).length) throw new Error('logo.svg: every gradient stop must read <stop offset=".." stop-color="#RRGGBB"/>');
+  const curve = [0, 1, 2].map(k => pchip(stops.map(s => s[0]), stops.map(s => s[1][k])));
+  const eased = Array.from({ length: steps + 1 }, (_, i) => `<stop offset="${(i / steps).toFixed(4)}" stop-color="${toHex(curve.map(f => f(i / steps)))}"/>`);
+  return svg.replace(/(<stop [^>]*\/>)+/, eased.join(''));
+}
+function pchip(xs, ys) {                         // monotone, so the curve never overshoots a rung
+  const n = xs.length, h = xs.slice(1).map((x, i) => x - xs[i]), d = h.map((hi, i) => (ys[i + 1] - ys[i]) / hi);
+  const m = [d[0], ...Array(n - 2).fill(0), d[n - 2]];
+  for (let i = 1; i < n - 1; i++) m[i] = d[i - 1] * d[i] <= 0 ? 0 : 3 * (h[i - 1] + h[i]) / ((2 * h[i] + h[i - 1]) / d[i - 1] + (h[i] + 2 * h[i - 1]) / d[i]);
+  return x => {
+    let i = 0; while (i < n - 2 && x > xs[i + 1]) i++;
+    const t = (x - xs[i]) / h[i];
+    return (2 * t ** 3 - 3 * t ** 2 + 1) * ys[i] + (t ** 3 - 2 * t ** 2 + t) * h[i] * m[i] + (3 * t ** 2 - 2 * t ** 3) * ys[i + 1] + (t ** 3 - t ** 2) * h[i] * m[i + 1];
+  };
+}
+function toLab(hex) {                            // sRGB hex to OKLab, Ottosson's matrices
+  const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255).map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+  const [l, m, s] = [0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b, 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b, 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b].map(Math.cbrt);
+  return [0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s, 1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s, 0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s];
+}
+function toHex([L, a, b]) {
+  const [l, m, s] = [L + 0.3963377774 * a + 0.2158037573 * b, L - 0.1055613458 * a - 0.0638541728 * b, L - 0.0894841775 * a - 1.2914855480 * b].map(v => v ** 3);
+  const rgb = [4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s, -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s];
+  return '#' + rgb.map(v => Math.min(1, Math.max(0, v))).map(v => v <= 0.0031308 ? 12.92 * v : 1.055 * v ** (1 / 2.4) - 0.055)
+    .map(v => Math.round(255 * v).toString(16).padStart(2, '0')).join('').toUpperCase();
+}
 
 const tmp = path.join(os.tmpdir(), 'blue-hour-hero'); mkdirSync(tmp, { recursive: true });
 const chrome = (args) => execFileSync(CHROME, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--virtual-time-budget=5000', ...args], { stdio: ['ignore', 'pipe', 'pipe'] }).toString();
