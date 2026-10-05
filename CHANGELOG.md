@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.11 — 2026-10-04
+- The README gains a version badge under its title. Nothing in the theme moves.
+
 ## 0.2.10 — 2026-10-04
 - The logo redrawn on the same four rungs. The fade through them is eased, where it had shown a line at each of the two middle colors, and the horizon line now passes the dome by its round ends, where the ground had shown through at the two corners. The icon and the hero's lockup are rendered from it again. No theme color moves.
 
