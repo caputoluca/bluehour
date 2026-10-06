@@ -1,6 +1,6 @@
 # Theme lab
 
-A folder of files that hit every syntax role, so a colour theme can be judged on *real* code, not a screenshot. Open it in the Extension Development Host and flip through the tabs.
+A folder of files that hit every syntax role, so a color theme can be judged on *real* code, not a screenshot. Open it in the Extension Development Host and flip through the tabs.
 
 ## What is here
 

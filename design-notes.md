@@ -11,7 +11,7 @@ The hues came from a room photographed at blue hour: the sofa's blue became the 
 Four were built in one evening and a fifth the next, all on the same ten sample files. The dead ones were deleted and the reasons kept.
 
 1. **v1 — the room's swatches on a monochrome scheme.** Read flat: three near-whites within a hair of one another, and the sampled near-black carried a blue cast. Photographed paint and fabric are low in chroma; on a screen beside Dark+ they wash out.
-2. **v2 — Dark+'s role structure with the nearest swatch for each role.** Read as colours thrown together; baby-blue variables were the clearest case of a swatch on a word for no reason. A mapping is not a design.
+2. **v2 — Dark+'s role structure with the nearest swatch for each role.** Read as colors thrown together; baby-blue variables were the clearest case of a swatch on a word for no reason. A mapping is not a design.
 3. **v3 — the blueprint done properly: six full hues on a designed ladder.** Reading became easy and the theme became generic, because six full hues is Dark+'s own recipe.
 4. **v4 — the same ladder, two accent families, flat near-black.** The first version worth keeping. Shipped as 0.1.0 for a trial.
 5. **v5 — names up a rung, calls onto the sky, the frame lifted (0.2.0), then the ground tinted (0.2.1).** The 0.1.0 trial found it clean but hard to read, and it was unclear whether that was habituation. Probes on the same file settled it: Vesper (two hues, white text, Lc 107) was also hard, GitHub Dark read easily, One Dark Pro was too busy. Contrast did not track the verdicts; hue count did, and a new many-hue theme reading fine on first sight ruled out habituation. I read by hue, and the 0.1.0 line gave the eye no cue to find. The published themes corrected the first fix: four of the seven read for this design leave variables plain and colour the functions instead. Names moved up a rung, from `#C4C4C4` (Lc 70, under the body-text floor) to Dark+'s own `#D4D4D4` (Lc 80). Tried on names first and rejected: lavender (slightly easier to read, wrong for a room with no purple), tan, cream, and the ladder's top white, which jarred when scrolling. Calls moved from white to the sky, shared with types as Vesper and GitHub Dark do. That read as too much blue, so two ways out were tried and rejected: keywords to a neutral (Vesper's move) and calls to the apricot. Calls on the sky stayed, because blue is the theme's main colour. Frame text (explorer, inactive tabs, breadcrumbs) had sat far below Dark+ (Lc 43 and 21 against about 75 and 40) and came up; carets and the activity-bar badge lost the peach, so warm in the frame now means attention only: warnings, ANSI yellow, a prompt. The ground came last, as 0.2.1: a lightness step of +0.03 L on its own was invisible; the real complaint was that zero chroma reads as lifeless, so the three bottom rungs took a trace of the blue-hour hue at the same lightness (`#181B1F` / `#212428` / `#2F3236`, C 0.009, H 256), the v1 cast done on the ladder instead of sampled. The status bar, section headers and titles went from the comment rung to the explorer rung at the same time. Two hybrids were built and shown, this frame with Dark+'s code and with GitHub Dark's: both read bright and too dark at once on `#141414`, a ground darker than either syntax set was designed for. Deleted; the lesson was the ground, not the hybrids.
@@ -44,7 +44,7 @@ The ladder:
 - CSS Color Module Level 4, § Oklab and Oklch. https://www.w3.org/TR/css-color-4/#ok-lab
 - APCA, *APCA in a Nutshell*. https://github.com/Myndex/SAPC-APCA/blob/master/documentation/APCA_in_a_Nutshell.md — the Lc targets: 90 preferred for body text, 75 the minimum for it, 60 for other content text, 45 for large text, 30 for placeholders; and why WCAG's ratio is the wrong guide for dark mode.
 - WCAG 2.2, 1.4.3 Contrast (Minimum). https://www.w3.org/TR/WCAG22/#contrast-minimum — every rung from `comment` up also clears 4.5:1; `muted` (line numbers, placeholders, hints) sits at 3.1:1 on purpose, as frame state read second.
-- Material Design 2, *Dark theme*. https://m2.material.io/design/color/dark-theme.html — saturated colours vibrate on dark surfaces; accents belong in the lighter tones.
+- Material Design 2, *Dark theme*. https://m2.material.io/design/color/dark-theme.html — saturated colors vibrate on dark surfaces; accents belong in the lighter tones.
 
 Mood, for v7:
 
@@ -62,7 +62,7 @@ Whether highlighting helps reading at all, for v5:
 The published themes read for their role mappings (which words get a hue, which stay neutral):
 
 - Catppuccin style guide. https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
-- Nord, colours and palettes. https://www.nordtheme.com/docs/colors-and-palettes
+- Nord, colors and palettes. https://www.nordtheme.com/docs/colors-and-palettes
 - Solarized. https://ethanschoonover.com/solarized/
 - Dracula spec. https://spec.draculatheme.com/
 - Rosé Pine palette. https://github.com/rose-pine/palette — the neutral rung names `muted`, `subtle`, `text` that `palette.json` extends.

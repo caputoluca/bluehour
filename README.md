@@ -18,7 +18,7 @@ The whole theme is minimal: one background, two color families, and gray for eve
 
 - **One background.** The editor, sidebar, tabs, panels and status bar are all the same near-black, with thin lines between them instead of lighter panels. I wanted one calm, cohesive base under everything. The near-black is the floor of the room.
 - **Two color families.** Blue hour is blue accents and warm highlights, so there is one cool family and one warm one. Keywords and tags are a soft blue, calls and types a lighter sky. Strings are peach, numbers and constants a lighter gold. I tried six full colors and it read easily but looked like every other theme. I tried making these four stronger and it turned into a blue theme, so they stay soft.
-- **Everything else is gray.** This is the minimalism again: with so little color, contrast against the near-black does the rest. Names are the brightest gray in code. Punctuation is darker so the names stand out, comments are darker again, and line numbers are darker still. Calls keep a color because I find my place in a line by color, and an all-gray line gave me nothing to look for.
+- **Everything else is gray.** With so little color, contrast against the near-black does the rest. Names are the brightest gray in code. Punctuation is darker so the names stand out, comments are darker again, and line numbers are darker still. Calls keep a color because I find my place in a line by color, and an all-gray line gave me nothing to look for.
 
 No italics and no bold in code. In Markdown, headings are bold and your own emphasis renders as written. Red only shows up for errors, invalid code, deletions and merge conflicts, and green only for additions and new files.
 
