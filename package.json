@@ -32,12 +32,24 @@
     ]
   },
   "scripts": {
+    "prepare": "husky || true",
     "hero": "node tools/hero.mjs",
     "check": "python3 tools/check.py",
     "lint": "biome check && uv run ruff format --check && uv run ruff check --ignore-noqa && uv run ty check && uv run basedpyright"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.7",
+    "husky": "9.1.7",
+    "lint-staged": "17.6.0",
     "shiki": "^4.4.3"
+  },
+  "lint-staged": {
+    "*.{js,mjs,json,jsonc,html}": "biome check --write --no-errors-on-unmatched",
+    "*.py": [
+      "uv run ruff format",
+      "uv run ruff check --ignore-noqa",
+      "uv run ty check",
+      "uv run basedpyright"
+    ]
   }
 }

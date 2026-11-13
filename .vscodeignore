@@ -17,3 +17,4 @@ uv.lock
 .python-version
 .venv/**
 .ruff_cache/**
+.husky/**
