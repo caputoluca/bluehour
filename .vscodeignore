@@ -18,3 +18,4 @@ uv.lock
 .venv/**
 .ruff_cache/**
 .husky/**
+.lintstagedrc.mjs

@@ -1,2 +1,7 @@
 npx lint-staged
-python3 tools/check.py
+
+# The drift check reads the files being committed, not the working tree: the index is copied out and checked there.
+staged=$(mktemp -d)
+trap 'rm -rf "$staged"' EXIT
+git checkout-index --all --prefix="$staged/"
+python3 "$staged/tools/check.py" "$staged"

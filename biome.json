@@ -7,7 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["tools/**", "biome.json"]
+		"includes": ["tools/**", "biome.json", ".lintstagedrc.mjs"]
 	},
 	"formatter": {
 		"enabled": true,
