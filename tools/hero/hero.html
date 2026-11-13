@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" style="{{colors}}">
+<meta charset="utf-8" />
+<title>Blue Hour</title>
+<!-- The page tools/hero.mjs screenshots for assets/hero.png. It fills each slot in double braces; the colors, on html as CSS variables, are the theme's own keys. -->
+<script>
+	document.fonts.load('18.75px "{{font}}"');
+</script>
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 1800px;
+		height: 945px;
+		overflow: hidden;
+		background: var(--ground);
+	}
+
+	/* the editor window, larger than the card, so the code runs off its right and bottom edges */
+	.win {
+		position: absolute;
+		left: 76px;
+		top: 76px;
+		width: 1900px;
+		height: 1000px;
+		background: var(--ground);
+		border: 1px solid var(--hairline);
+		border-radius: 14px;
+		overflow: hidden;
+		box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+	}
+	.bar {
+		height: 52px;
+		display: flex;
+		align-items: center;
+		padding: 0 22px;
+		border-bottom: 1px solid var(--hairline);
+		font: 15px/1 -apple-system, "SF Pro Text", sans-serif;
+		color: var(--bar-text);
+	}
+	.dots {
+		display: flex;
+		gap: 9px;
+		margin-right: auto;
+	}
+	.dots i {
+		width: 13px;
+		height: 13px;
+		border-radius: 50%;
+		display: block;
+		background: var(--dots);
+	}
+	.title {
+		position: absolute;
+		left: 0;
+		right: 0;
+		text-align: center;
+	}
+
+	/* the code: a gutter mark, the line number, the colored line */
+	.code {
+		position: relative;
+		padding-top: 22px;
+		font: 18.75px/28.125px "{{font}}", monospace;
+		font-feature-settings: "liga" 1, "calt" 1;
+		color: var(--text);
+		white-space: pre;
+	}
+	.line {
+		display: flex;
+		height: 28.125px;
+	}
+	.line.cur {
+		background: var(--raised);
+	}
+	.g {
+		width: 4px;
+	}
+	.n {
+		width: 88px;
+		padding-right: 32px;
+		text-align: right;
+		color: var(--line-number);
+		flex: none;
+	}
+	.cur .n {
+		color: var(--active-line-number);
+	}
+	.c {
+		flex: none;
+	}
+
+	/* the code fades into the ground to the right and at the bottom */
+	.fade-r {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(90deg, transparent 55%, var(--ground) 67%);
+	}
+	.fade-b {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, transparent 80%, var(--ground) 100%);
+	}
+
+	/* the lockup, bottom right: the logo, the wordmark, the caption */
+	.mark {
+		position: absolute;
+		right: 76px;
+		bottom: 60px;
+	}
+	.lock {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		justify-content: flex-end;
+		font: 500 32px/1 -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif;
+		color: var(--wordmark);
+		letter-spacing: 0.01em;
+	}
+	.lock svg {
+		width: 64px;
+		height: 64px;
+	}
+	.mark small {
+		display: block;
+		margin-top: 8px;
+		font: 400 15px/1 "{{font}}", monospace;
+		color: var(--caption);
+		text-align: right;
+		letter-spacing: 0.04em;
+	}
+</style>
+
+<div class="win">
+	<div class="bar">
+		<span class="dots"><i></i><i></i><i></i></span>
+		<span class="title">{{file}}</span>
+	</div>
+	<!-- no whitespace inside .code: it is white-space: pre -->
+	<div class="code">{{lines}}</div>
+</div>
+<div class="fade-r"></div>
+<div class="fade-b"></div>
+<div class="mark">
+	<div class="lock">{{logo}}<span>Blue Hour</span></div>
+	<small>a dark theme for Cursor and VS Code</small>
+</div>
+</html>

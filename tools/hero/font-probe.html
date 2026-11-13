@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" />
+<title>Font probe</title>
+<!--
+	tools/hero.mjs loads this page before it renders, and refuses to render unless the font is installed: the same
+	text set in it and in a font that exists nowhere (both falling back to the same serif) must measure differently.
+	The answer is split in the source, so the page's own text cannot match it before the script runs.
+-->
+<body>
+	<span id="font" style="font: 32px '{{font}}', serif">The hour after sunset</span>
+	<span id="fallback" style="font: 32px 'No Such Font 7f3a', serif">The hour after sunset</span>
+	<script>
+		const width = (id) => document.getElementById(id).getBoundingClientRect().width;
+		document.body.textContent = width("font") !== width("fallback") ? "FONT_" + "PRESENT" : "FONT_" + "MISSING";
+	</script>
+</body>
+</html>

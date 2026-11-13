@@ -1,0 +1,56 @@
+# The Python tools' dev gate. No [project] table: the tools run on the system python3 with the standard library alone, so this file
+# holds only the checkers, at exact versions locked in uv.lock, and their settings. `uv sync` installs them; `npm run lint` runs them.
+[dependency-groups]
+dev = [
+	"ruff==0.17.3",
+	"ty==0.0.95",
+	"basedpyright==1.40.2",
+]
+
+[tool.uv]
+# The lock resolves only what was published before this date, so a later `uv lock` picks the same versions until the date moves.
+exclude-newer = "2026-11-01T00:00:00Z"
+
+[tool.ruff]
+line-length = 120
+# The oldest interpreter that runs the tools: macOS's own /usr/bin/python3, 3.9, since the README says to run them with python3.
+# The checkers check against 3.9; their own environment is 3.12 (.python-version), since basedpyright installs only on 3.10+.
+target-version = "py39"
+src = ["tools"]
+extend-exclude = ["samples", "*.md"]  # the samples are colored, never run; a Markdown file's code blocks are examples, not the tools
+
+[tool.ruff.lint]
+# Whole families, explicitly; each family-wide exception is named below with its why, a file's own in per-file-ignores, never inline
+# (the gate runs ruff with --ignore-noqa).
+select = [
+	"F", "E", "W", "I", "N", "UP", "B", "BLE", "FBT", "C4", "C90", "S", "DTZ", "PTH", "SIM", "RUF", "PL", "FURB", "PIE", "PYI",
+	"YTT", "ASYNC", "PT", "TRY", "LOG", "G", "TC", "EXE", "PERF", "INT", "FA", "TID", "T10", "RET", "PGH", "ISC", "FLY", "ANN",
+]
+ignore = [
+	"E501",  # line length: the formatter's, at 120
+	"PLR2004",  # a number in a comparison: the color math's constants are the published ones, read in place
+	"RUF001",  # an ambiguous character in a string: the em dash is the token rule names' separator and the table's empty cell
+]
+
+[tool.ruff.lint.pylint]
+max-positional-args = 2  # past the second, a parameter is keyword-only
+
+[tool.ruff.lint.per-file-ignores]
+"tools/check.py" = ["N815"]  # the TypedDicts mirror the theme file's own camelCase keys (tokenColors, fontStyle)
+
+[tool.ty.environment]
+python-version = "3.9"
+extra-paths = ["tools"]  # check.py imports colortool from beside it, as `python3 tools/check.py` puts tools/ on the path
+
+[tool.ty.analysis]
+return-type-inference = "always"
+
+[tool.ty.src]
+include = ["tools"]
+
+[tool.basedpyright]
+typeCheckingMode = "strict"
+reportDeprecated = "error"
+pythonVersion = "3.9"
+include = ["tools"]
+extraPaths = ["tools"]

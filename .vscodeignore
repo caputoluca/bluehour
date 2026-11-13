@@ -11,3 +11,9 @@ package-lock.json
 assets/hero.png
 assets/logo.svg
 design-notes.md
+biome.json
+pyproject.toml
+uv.lock
+.python-version
+.venv/**
+.ruff_cache/**
